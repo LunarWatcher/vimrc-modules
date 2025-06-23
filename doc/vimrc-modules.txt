@@ -1,0 +1,60 @@
+*vimrc-modules* Meta plugin with opinionated vimrc extensions
+*vimrc-modules.vim* *vimrc-modules.txt*
+
+License: MIT
+URL: https://codeberg.org/LunarWatcher/vimrc-modules
+
+
+================================================================================
+Table of contents~
+
+    1. Supported modules ..................... |vimrc-supported-modules|
+        1.1. Vimspector extensions ........... |vimrc-vimspector|
+    2. Footnotes ............................. |vimrc-footnotes|
+
+================================================================================
+1. Supported modules                                     *vimrc-supported-modules*
+
+The modules this plugin contains are:
+
+* modules/vimspector (|vimrc-vimspector|): extensions for vimspector[^1],
+    primarily used for avoiding unnecessary config files
+
+--------------------------------------------------------------------------------
+1.1. Vimspector extensions                                      *vimrc-vimspector*
+
+The vimspector module (only loaded on non-windows systems) adds some utility
+commands that adds commands that launch some standard debug configurations,
+without requiring a special .vimspector.json file to be made in every single 
+fucking project.
+
+The built-in commands are:
+
+* *:DebugDenoScript* <script>
+    Used for one-off scripts, rather than something with a managed entrypoint.
+    Can theoretically be used anywhere a standard `deno run script.ts` is used
+    (or equivalent for ts). Requires vscode-js-debug
+
+    A function for standard node use is left as future work for myself. Fuck you
+    future me :)
+* *:DebugDenoSelf*
+    Same as |:DebugDenoScript|, but passes the current file path as the script
+    to run. Also requries vscode-js-debug
+* *:DebugCpp* <executable>
+    Self-explanatory because compiled languages. Requires vscode-cpptools
+
+    Assumes that the working directory is `build/`, but the path to the binary
+    still needs to be fully qualified. Because autocomplete, this should not be
+    much of an issue.
+
+
+================================================================================
+2. Footnotes                                                     *vimrc-footnotes*
+
+Note: The footnotes are sorted by the order in which they were written, not by
+order of appearance. This is to avoid a fuckton of rewrites to this list.
+
+[^1]: https://github.com/puremourning/vimspector
+
+
+vim:ft=help:tw=80
