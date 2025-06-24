@@ -12,6 +12,10 @@ def DebugDenoScript(script: string)
         echoerr "You must be in a file buffer, or vimspector itself cannot handle launching your program"
         return
     endif
+    if expand('%') == ""
+        echoerr "You appear to be in an invalid buffer"
+        return
+    endif
     vimspector#LaunchWithConfigurations({
         "(Global) Deno: Launch script": {
             "adapter": "js-debug",

@@ -10,18 +10,27 @@ Table of contents~
 
     1. Supported modules ..................... |vimrc-supported-modules|
         1.1. Vimspector extensions ........... |vimrc-vimspector|
-    2. Footnotes ............................. |vimrc-footnotes|
+    2. Config options ........................ |vimrc-config-options|
+        g:VimrcModulesCustomLoad ............. |g:VimrcModulesCustomLoad|
+    3. Footnotes ............................. |vimrc-footnotes|
 
 ================================================================================
-1. Supported modules                                     *vimrc-supported-modules*
+1. Introduction                                               *vimrc-introduction*
+
+================================================================================
+2. Supported modules                                     *vimrc-supported-modules*
 
 The modules this plugin contains are:
-
 * modules/vimspector (|vimrc-vimspector|): extensions for vimspector[^1],
     primarily used for avoiding unnecessary config files
 
+The dependencies for the modules are:                          *vimrc-module-deps*
+* modules/vimspector: [Vimspector](https://github.com/puremourning/vimspector).
+    Some functions require specific vimspector gadgets, documented in
+    |vimrc-vimspector|. Requires Linux to be sourced.
+
 --------------------------------------------------------------------------------
-1.1. Vimspector extensions                                      *vimrc-vimspector*
+2.1. Vimspector extensions                                      *vimrc-vimspector*
 
 The vimspector module (only loaded on non-windows systems) adds some utility
 commands that adds commands that launch some standard debug configurations,
@@ -47,9 +56,21 @@ The built-in commands are:
     still needs to be fully qualified. Because autocomplete, this should not be
     much of an issue.
 
+================================================================================
+3. Config options                                           *vimrc-config-options*
+
+--------------------------------------------------------------------------------
+g:VimrcModulesCustomLoad                                *g:VimrcModulesCustomLoad*
+
+Type: Boolean
+Default: 0
+
+If defined and set to 1, the `plugin/vimrcmodules.vim` file is not executed,
+which means no modules are loaded. You can set this if you need granular
+settings for when to load modules, or whether to load certain modules at all.
 
 ================================================================================
-2. Footnotes                                                     *vimrc-footnotes*
+4. Footnotes                                                     *vimrc-footnotes*
 
 Note: The footnotes are sorted by the order in which they were written, not by
 order of appearance. This is to avoid a fuckton of rewrites to this list.
