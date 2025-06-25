@@ -7,7 +7,7 @@ def AssertCorrectBuffer(): bool
     return true
 enddef
 
-def DebugDenoScript(script: string)
+def DebugDenoScript(script: string, ...args: list<string>)
     if !AssertCorrectBuffer()
         echoerr "You must be in a file buffer, or vimspector itself cannot handle launching your program"
         return
@@ -22,6 +22,7 @@ def DebugDenoScript(script: string)
             "configuration": {
                 "request": "launch",
                 "program": script,
+                "args": args,
                 "runtimeExecutable": "deno",
                 "runtimeArgs": [
                     "run",
@@ -41,7 +42,7 @@ def DebugDenoScript(script: string)
     })
 enddef
 
-def DebugCpp(executable: string)
+def DebugCpp(executable: string, ...args: list<string>)
     if !AssertCorrectBuffer()
         echoerr "You must be in a file buffer, or vimspector itself cannot handle launching your program"
         return
@@ -52,6 +53,7 @@ def DebugCpp(executable: string)
             "configuration": {
                 "request": "launch",
                 "program": "${cwd}/" .. executable,
+                "args": args,
                 "stopAtEntry": false,
                 "MIMode": "gdb",
                 "cwd": "${cwd}/build/",
@@ -62,8 +64,8 @@ def DebugCpp(executable: string)
 enddef
 
 export def Init() 
-    command! -nargs=1 -complete=file DebugDenoScript DebugDenoScript(<f-args>)
-    command! -nargs=0 DebugDenoSelf DebugDenoScript(expand('%:p'))
-    command! -nargs=1 -complete=file DebugCpp DebugCpp(<f-args>)
+    command! -nargs=+ -complete=file DebugDenoScript DebugDenoScript(<f-args>)
+    command! -nargs=* DebugDenoSelf DebugDenoScript(expand('%:p'), <f-args>)
+    command! -nargs=+ -complete=file DebugCpp DebugCpp(<f-args>)
 enddef
 
