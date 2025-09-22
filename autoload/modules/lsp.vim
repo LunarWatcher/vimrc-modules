@@ -18,7 +18,9 @@ var lsps = {
         path: g:LspRoot .. "/clangd/bin/clangd",
         args: [
             "--background-index",
-            "--clang-tidy"
+            "--clang-tidy",
+            # Seems to work, but this is fragile
+            "--compile-commands-dir=./build",
         ],
         rootSearch: [
             "CMakeLists.txt"
@@ -40,7 +42,10 @@ var lsps = {
             "typescriptreact", "javascriptreact",
         ],
         path: g:LspRoot .. "/node_modules/.bin/typescript-language-server",
-        args: ['--stdio']
+        args: ['--stdio'],
+        rootSearch: [
+            "package-lock.json", "pnpm-lock.yaml"
+        ]
     },
     # TODO: deno uses the system deno install, so resolving it cannot be done
     # with g:LspRoot. This is a rare exception where the LSP isn't separately
@@ -67,9 +72,9 @@ var lsps = {
         args: ['--stdio'],
         workspaceConfig: {
             python: {
-                pythonPath: 'python3'
+                pythonPath: './env/bin/python3'
             }
-        }
+        },
     },
 }
 export def Location(name: string): dict<any>
