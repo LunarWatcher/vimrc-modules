@@ -26,7 +26,7 @@ var lsps = {
     },
     "kotlin-lsp": {
         filetype: ["kotlin"],
-        path: g:LspRoot .. "/kotlin-lsp/bin/kotlin-lsp.sh",
+        path: g:LspRoot .. "/kotlin-lsp/kotlin-lsp.sh",
         args: [
             "--stdio",
         ],
