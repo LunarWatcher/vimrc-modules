@@ -1,0 +1,33 @@
+*livi-cheatsheet* experimental cheat-sheet for stuff:tm: 
+
+================================================================================
+
+Table of contents~
+
+    1. Useful help pages ........... |livi-cheat-help|
+
+================================================================================
+1. Useful help pages and shortcuts                               *livi-cheat-help*
+
+Meta~
+* |vimrc-modules|
+
+Completion stuff~
+* |i_CTRL-X_CTRL-R| - register completion. But weird to use, but kinda works
+  sort of?
+* |i_CTRL-X_CTRL-S| - first spell suggestion for the current word.
+
+Spelling~
+
+TODO
+
+================================================================================
+2. Vimscript                                                *livi-cheat-vimscript*
+
+--------------------------------------------------------------------------------
+2.1. Dicts                                            *livi-cheat-vimscript-dicts*
+
+* |has_key()|
+* |get()| - also has a default argument
+
+vim:ft=help:tw=80
