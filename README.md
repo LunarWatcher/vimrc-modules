@@ -14,3 +14,5 @@ All functional modules are loaded automatically, and are heavily influenced by p
 ## Library modules
 Library modules exclusively supply various helper functions.
 
+## License
+MIT. See the LICENSE file.
