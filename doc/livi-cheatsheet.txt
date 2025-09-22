@@ -4,7 +4,9 @@
 
 Table of contents~
 
-    1. Useful help pages ........... |livi-cheat-help|
+    1. Useful help pages and shortcuts ........... |livi-cheat-help|
+    2. Vimscript ................................. |livi-cheat-vimscript|
+        2.1. Dicts ............................... |livi-cheat-vimscript-dicts|
 
 ================================================================================
 1. Useful help pages and shortcuts                               *livi-cheat-help*
