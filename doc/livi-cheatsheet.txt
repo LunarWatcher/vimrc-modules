@@ -32,4 +32,18 @@ TODO
 * |has_key()|
 * |get()| - also has a default argument
 
+================================================================================
+3. New plugins and features                                       *livi-cheat-new*
+
+Commenting~
+
+* <leader>c<space> is now replaced with gc, which apparently is standard in
+  other plugins too
+  * |commentary.txt|
+  * Removing nerdcommenter means no block comment keybind, but I never used this
+    so it's fine.
+    tomtom/tcomment_vim supports these if that ever becomes worth looking into;
+    see .vimrc comments
+
+
 vim:ft=help:tw=80
