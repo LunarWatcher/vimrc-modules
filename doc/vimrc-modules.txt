@@ -8,29 +8,46 @@ URL: https://codeberg.org/LunarWatcher/vimrc-modules
 ================================================================================
 Table of contents~
 
-    1. Supported modules ..................... |vimrc-supported-modules|
-        1.1. Vimspector extensions ........... |vimrc-vimspector|
-    2. Config options ........................ |vimrc-config-options|
+    1. Introduction .......................... |vimrc-introduction|
+    2. Supported modules ..................... |vimrc-supported-modules|
+        2.1. Vimspector extensions ........... |vimrc-vimspector|
+        2.2. LSP config ...................... |vimrc-lsp|
+    3. Config options ........................ |vimrc-config-options|
         g:VimrcModulesCustomLoad ............. |g:VimrcModulesCustomLoad|
-    3. Footnotes ............................. |vimrc-footnotes|
+    4. Footnotes ............................. |vimrc-footnotes|
 
 ================================================================================
 1. Introduction                                               *vimrc-introduction*
+
+--------------------------------------------------------------------------------
+1.1. Terminology                                               *vimrc-terminology*
+
+TYPES
+* Functional: refers to modules that are sourced by the vimrcmodules.vim plugin
+* Library: refers to pure library modules that aren't sourced
+* Plugin: refers to plugins, except the `vimrcmodules.vim` plugin, which is an
+  extension of the functional type.
+* Common: not included in this documentation, but refers to modules used by
+  several different things. They're stored in `autoload/common`.
 
 ================================================================================
 2. Supported modules                                     *vimrc-supported-modules*
 
 The modules this plugin contains are:
 * modules/vimspector (|vimrc-vimspector|): extensions for vimspector[^1],
-    primarily used for avoiding unnecessary config files
+  primarily used for avoiding unnecessary config files
+* modules/lsp (|vimrc-lsp|): returns yegappan/lsp-compatible config for LSP
+  servers.
 
 The dependencies for the modules are:                          *vimrc-module-deps*
 * modules/vimspector: [Vimspector](https://github.com/puremourning/vimspector).
-    Some functions require specific vimspector gadgets, documented in
-    |vimrc-vimspector|. Requires Linux to be sourced.
+  Some functions require specific vimspector gadgets, documented in
+  |vimrc-vimspector|. Requires Linux to be sourced.
+* modules/lsp: None, but returns yegappan/lsp-compatible objects
 
 --------------------------------------------------------------------------------
 2.1. Vimspector extensions                                      *vimrc-vimspector*
+Type: functional~
 
 The vimspector module (only loaded on non-windows systems) adds some utility
 commands that adds commands that launch some standard debug configurations,
@@ -56,8 +73,45 @@ The built-in commands are:
     still needs to be fully qualified. Because autocomplete, this should not be
     much of an issue.
 
+
+--------------------------------------------------------------------------------
+2.2. LSP config                                                        *vimrc-lsp*
+Type: library~
+
+Returns objects of LSP config compatible with yegappan/lsp. Example use: >
+    
+    let lsps = [ modules#lsp#Location("clangd") ]
+    ...
+    call LspAddServer(lsps)
+<
+
+Only a few LSPs are supported. See the source code for the list. For actually
+installing the LSPs, use https://github.com/LunarWatcher/lspinstaller
+
 ================================================================================
-3. Config options                                           *vimrc-config-options*
+3. `ftplugin`s                                                   *vimrc-ftplugins*
+
+--------------------------------------------------------------------------------
+3.1. General                                              *vimrc-ftplugin-general*
+
+No general features yet
+
+--------------------------------------------------------------------------------
+3.2. C/C++                                                  *vimrc-ftplugin-c-cpp*
+
+Clangd fix~
+Includes a nasty hack that strips redundant quotes inserted by clangd. On
+completion done, string headers are inserted as >
+    #include "my/header.hpp""
+<
+when using an auto-pair plugin.
+
+The fix (see autoload/common/c.vim for the actual code) strips the redundant
+quote with an autocmd-triggered `"_x`
+
+
+================================================================================
+4. Config options                                           *vimrc-config-options*
 
 --------------------------------------------------------------------------------
 g:VimrcModulesCustomLoad                                *g:VimrcModulesCustomLoad*
@@ -70,7 +124,7 @@ which means no modules are loaded. You can set this if you need granular
 settings for when to load modules, or whether to load certain modules at all.
 
 ================================================================================
-4. Footnotes                                                     *vimrc-footnotes*
+5. Footnotes                                                     *vimrc-footnotes*
 
 Note: The footnotes are sorted by the order in which they were written, not by
 order of appearance. This is to avoid a fuckton of rewrites to this list.

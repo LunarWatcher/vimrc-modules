@@ -12,7 +12,13 @@ All functional modules are loaded automatically, and are heavily influenced by p
 * Things that could be a standalone plugin with more reusability. That said, some plugins may start out as modules here and then graduate to plugins. Whether this'll ever happen is TBD
 
 ## Library modules
-Library modules exclusively supply various helper functions.
+Library modules exclusively supply various helper functions. They don't do anything unless invoked. 
+
+## Plugins
+
+Some modules are actually plugins. This currently includes:
+
+* `mkdir-on-write`
 
 ## License
 MIT. See the LICENSE file.
