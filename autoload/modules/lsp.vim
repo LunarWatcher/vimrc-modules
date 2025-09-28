@@ -64,7 +64,8 @@ var lsps = {
     },
     pyright: {
         filetype: [
-            "python"
+            "python",
+            "python.doxygen"
         ],
         path: g:LspRoot .. '/node_modules/.bin/pyright-langserver',
         args: ['--stdio'],
@@ -73,6 +74,9 @@ var lsps = {
                 pythonPath: './env/bin/python3'
             }
         },
+        rootSearch: [
+            "requirements.txt", "pyproject.toml"
+        ]
     },
 }
 export def Location(name: string): dict<any>
