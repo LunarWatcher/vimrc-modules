@@ -50,11 +50,9 @@ var lsps = {
     # TODO: deno uses the system deno install, so resolving it cannot be done
     # with g:LspRoot. This is a rare exception where the LSP isn't separately
     # installed
-    # TODO: figure out how to differentiate whether to use deno or tsserver
-    # for a given buffer. Likely need a command to switch.
     deno: {
         filetype: [
-            "typescript", "javascript"
+            "deno.typescript", "deno.javascript"
         ],
         path: 'deno',
         args: ['lsp'],
