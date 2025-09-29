@@ -52,14 +52,28 @@ var lsps = {
     # installed
     deno: {
         filetype: [
-            "deno.typescript", "deno.javascript"
+            "typescript", "javascript"
         ],
         path: 'deno',
         args: ['lsp'],
-        debug: true,
         initializationOptions: {
              enable: true,
              lint: true
+        },
+        rootSearch: [
+            "deno.json"
+        ],
+        customNotificationHandlers: {
+            "deno/didUpgradeCheck": (lspserver, reply) => {
+                if reply.params.upgradeAvailable != null
+                    echom "New Deno version available:" reply.params.upgradeAvailable
+                endif
+            },
+            # Don't care
+            "deno/didRefreshDenoConfigurationTree": (lspserver, reply) => {
+            },
+            "deno/didChangeDenoConfiguration": (lspserver, reply) => {
+            },
         }
     },
     pyright: {
@@ -89,7 +103,12 @@ export def Location(name: string): dict<any>
     endif
 
     if lsps->has_key(name)
-        return copy(lsps[name])->extend({
+        var lsp: dict<any> = lsps[name]
+        var callback: any = lsp->get("_liviPreload", null)
+        if callback != null
+            callback->call([])
+        endif
+        return copy(lsp)->extend({
             name: name
         })
     endif
