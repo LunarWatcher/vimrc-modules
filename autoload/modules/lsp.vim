@@ -32,8 +32,11 @@ var lsps = {
         args: [
             "--stdio",
         ],
+        syncInit: true,
         rootSearch: [
-            "settings.gradle.kts"
+            "settings.gradle.kts",
+            "build.gradle",
+            "build.gradle.kts",
         ]
     },
     tsserver: {
