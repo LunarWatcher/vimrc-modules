@@ -95,6 +95,20 @@ var lsps = {
             "requirements.txt", "pyproject.toml"
         ]
     },
+    luals: {
+        filetype: [
+            "lua"
+        ],
+        path: g:LspRoot .. "/luals/bin/lua-language-server",
+        args: [],
+        workspaceConfig: {
+            Lua: {
+                hint: {
+                    enable: true
+                }
+            }
+        }
+    }
 }
 export def Location(name: string): dict<any>
     if has("mac")
