@@ -50,9 +50,9 @@ var lsps = {
             "package.json", "package-lock.json", "pnpm-lock.yaml"
         ],
         initializationOptions: {
-            tsserver: [
+            tsserver: {
                 path: g:LspRoot .. "/node_modules/typescript/lib/tsserver.js"
-            ]
+            }
         }
     },
     # TODO: deno uses the system deno install, so resolving it cannot be done
