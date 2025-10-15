@@ -49,11 +49,11 @@ var lsps = {
         rootSearch: [
             "package.json", "package-lock.json", "pnpm-lock.yaml"
         ],
-        initializationOptions: [
+        initializationOptions: {
             tsserver: [
                 path: g:LspRoot .. "/node_modules/typescript/lib/tsserver.js"
             ]
-        ]
+        }
     },
     # TODO: deno uses the system deno install, so resolving it cannot be done
     # with g:LspRoot. This is a rare exception where the LSP isn't separately
