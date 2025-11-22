@@ -113,6 +113,19 @@ var lsps = {
                 }
             }
         }
+    },
+    ccls: {
+        filetype: ["c", "cpp", "cpp.doxygen", "c.doxygen"],
+        # Can't be bothered building it from source
+        path: "/usr/bin/ccls",
+        args: [
+
+        ],
+        rootSearch: [
+        ],
+        initializationOptions: {
+            compilationDatabaseDirectory: "build"
+        }
     }
 }
 export def Location(name: string): dict<any>
