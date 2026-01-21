@@ -100,6 +100,22 @@ var lsps = {
             "requirements.txt", "pyproject.toml"
         ]
     },
+    ty: {
+        filetype: [
+            "python",
+            "python.doxygen"
+        ],
+        path: g:LspRoot .. '/env/bin/ty',
+        args: ['server'],
+        workspaceConfig: {
+            python: {
+                pythonPath: './env/bin/python3'
+            }
+        },
+        rootSearch: [
+            "requirements.txt", "pyproject.toml"
+        ]
+    },
     luals: {
         filetype: [
             "lua"
