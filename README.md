@@ -2,6 +2,7 @@
 
 This repo contains some vimrc modules primarily used in [my .vimrc](https://codeberg.org/LunarWatcher/dotfiles/blob/master/.vimrc). They're kept separate for reusability, and as an attempt to reduce the already highly monolithic behaviour of my vimrc.
 
+As of 2026-03-08, this plugin is no longer maintained. Due to [AI slop in vim](https://hachyderm.io/@AndrewRadev/116175986749599825), I have moved to emacs with evil mode.
 
 ## Functional modules
 All functional modules are loaded automatically, and are heavily influenced by personal preference. In addition, to reduce complexity, the plugin will never implement:
